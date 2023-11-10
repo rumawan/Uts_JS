@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2</title>
+    <style>
+      h1 {
+        color: #4285f4;
+      }
+      #gambar {
+        max-width: 5%;
+        height: auto;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Selamat Ujian Framework JS</h1>
+
+    <h2>Bio Data :</h2>
+    <img id="gambar" src="gambar/rmwn.jpeg" alt="Rumawan" />
+    <p id="nama"></p>
+    <p id="nim"></p>
+    <p id="jurusan"></p>
+    <p id="tglUjian"></p>
+
+    <script>
+      // Menggunakan DOM untuk mengubah isi elemen
+      document.getElementById("gambar").src = "gambar/rmwn.jpeg";
+      document.getElementById("nama").innerHTML = "Nama: Rumawan";
+      document.getElementById("nim").innerHTML = "NIM: SI18210020";
+      document.getElementById("jurusan").innerHTML = "Jurusan: Sistem Informasi";
+      document.getElementById("tglUjian").innerHTML = "Tanggal Ujian: 08 November 2023";
+    </script>
+  </body>
+</html>

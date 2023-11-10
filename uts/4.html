@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: left;
+        margin: 20px;
+      }
+
+      #hotel-info {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Reservasi Hotel</h2>
+
+    <label for="pilih_hotel">Pilih:</label>
+    <select id="pilih_hotel" onchange="tampilkanInfoHotel()">
+      <option value="hotel1">Hotel Aston Senggigi</option>
+      <!-- Add more hotels as needed --></select
+    ><br />
+
+    <div id="hotel-info"></div>
+    <button onclick="booking()">Booking Hotel</button>
+    <button onclick="batalBooking()">Batal Booking</button>
+
+    <script>
+      class Hotel {
+        constructor(nama, alamat, jumlahKamar, fasilitas, klasifikasi) {
+          this.nama = nama;
+          this.alamat = alamat;
+          this.jumlahKamar = jumlahKamar;
+          this.fasilitas = fasilitas;
+          this.klasifikasi = klasifikasi;
+          this.statusBooking = false;
+        }
+
+        booking() {
+          if (!this.statusBooking) {
+            this.statusBooking = true;
+            this.tampilInformasi();
+            updateInfo(`
+            Selamat! Anda telah berhasil melakukan booking di ${this.nama}.<br>
+            ${this.getInformasi()}
+          `);
+          } else {
+            updateInfo(`Maaf, kamar di ${this.nama} sudah terbooking.`);
+          }
+        }
+
+        batalBooking() {
+          if (this.statusBooking) {
+            this.statusBooking = false;
+            this.tampilInformasi();
+            updateInfo(`
+            Booking di ${this.nama} berhasil dibatalkan.<br>
+            ${this.getInformasi()}
+          `);
+          } else {
+            updateInfo(`Tidak ada booking yang perlu dibatalkan di ${this.nama}.`);
+          }
+        }
+
+        tampilInformasi() {
+          updateInfo(`
+          <strong>Informasi Hotel:</strong><br>
+          <strong>Nama Hotel:</strong> ${this.nama}<br>
+          <strong>Alamat:</strong> ${this.alamat}<br>
+          <strong>Jumlah Kamar:</strong> ${this.jumlahKamar}<br>
+          <strong>Fasilitas:</strong> ${this.fasilitas.join(", ")}<br>
+          <strong>Klasifikasi:</strong> ${this.klasifikasi}<br>
+        `);
+        }
+
+        getInformasi() {
+          return `
+          <strong>Informasi Hotel:</strong><br>
+          <strong>Nama Hotel:</strong> ${this.nama}<br>
+          <strong>Alamat:</strong> ${this.alamat}<br>
+          <strong>Nomor Kamar:</strong> ${this.jumlahKamar}<br>
+          <strong>Fasilitas:</strong> ${this.fasilitas.join(", ")}<br>
+          <strong>Klasifikasi:</strong> ${this.klasifikasi}<br>
+        `;
+        }
+      }
+
+      const hotel = {
+        hotel1: new Hotel("Hotel Aston Senggigi", "Jalan Raya No. 136 Senggigi", 50, ["WiFi", "Swimming Pool"], "Bintang 4"),
+        // Add more hotels as needed
+      };
+
+      function updateInfo(message) {
+        document.getElementById("hotel-info").innerHTML = message;
+      }
+
+      function tampilkanInfoHotel() {
+        const pilih_hotel = document.getElementById("pilih_hotel").value;
+        if (pilih_hotel in hotel) {
+          hotel[pilih_hotel].tampilInformasi();
+        } else {
+          updateInfo("");
+        }
+      }
+
+      function booking() {
+        const pilih_hotel = document.getElementById("pilih_hotel").value;
+        if (pilih_hotel in hotel) {
+          hotel[pilih_hotel].booking();
+        }
+      }
+
+      function batalBooking() {
+        const pilih_hotel = document.getElementById("pilih_hotel").value;
+        if (pilih_hotel in hotel) {
+          hotel[pilih_hotel].batalBooking();
+        }
+      }
+    </script>
+  </body>
+</html>

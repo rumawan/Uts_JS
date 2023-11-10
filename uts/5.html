@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5</title>
+    <style>
+      #gambar_hewan {
+        max-width: 40%;
+        height: auto;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <img id="gambar_hewan" src="" alt="Pilih Hewan" />
+
+    <table border="1">
+      <tr>
+        <th>Nama</th>
+        <th>Gambar</th>
+      </tr>
+      <tr>
+        <td>Ayam</td>
+        <td><button onclick="tampilGnbr('ayam')">Lihat Gambar</button></td>
+      </tr>
+      <tr>
+        <td>Bebek</td>
+        <td><button onclick="tampilGnbr('bebek')">Lihat Gambar</button></td>
+      </tr>
+      <tr>
+        <td>kambing</td>
+        <td><button onclick="tampilGnbr('kambing')">Lihat Gambar</button></td>
+      </tr>
+      <tr>
+        <td>kupu-kupu</td>
+        <td><button onclick="tampilGnbr('kupu-kupu')">Lihat Gambar</button></td>
+      </tr>
+    </table>
+
+    <script>
+      function tampilGnbr(animal) {
+        var imageElement = document.getElementById("gambar_hewan");
+
+        switch (animal) {
+          case "ayam":
+            imageElement.src = "gambar/ayam.jpeg";
+            break;
+          case "bebek":
+            imageElement.src = "gambar/bebek.jpeg";
+            break;
+          case "kambing":
+            imageElement.src = "gambar/kambing.jpeg";
+            break;
+          case "kupu-kupu":
+            imageElement.src = "gambar/kupukupu.jpeg";
+            break;
+          default:
+            imageElement.src = "";
+        }
+      }
+    </script>
+  </body>
+</html>
